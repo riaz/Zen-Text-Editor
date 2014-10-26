@@ -7,128 +7,7 @@ import win32api
 import tempfile
 import win32print
 
-
 root = Tk()
-
-def waste():
-    textPad = ScrolledText(root,width=100,height=30,fg="#ffffff")
-    textPad.configure(background='#6F706B')
-
-    #create a menu
-
-    #Open sub-menu handler
-    def open_command():
-        file = tkFileDialog.askopenfile(parent=root,mode='rb',title='Select a file')
-        if file != None:
-            textPad.delete('1.0',END)
-            contents = file.read()
-            root.wm_title(file.name + " : Zen Text Editor")
-            textPad.insert('1.0',contents)
-            file.close()
-
-    #Save sub-menu handler
-    def save_command():
-        file = tkFileDialog.asksaveasfile(mode='w')
-        if file != None:
-            #slicing off the last character from get, as an extra return is appended to the get function call
-            data = textPad.get('1.0',END+'-1c')
-            file.write(data)
-            root.wm_title(file.name + " : Zen Text Editor")        
-            file.close()
-
-    #Exit sub-menu handler
-    def exit_command():
-        if tkMessageBox.askokcancel("Quit ","Do you really want to quit?"):
-            root.destroy();
-
-    #About sub-menu handler
-    def about_command():
-        label = tkMessageBox.showinfo("About"," Zen Text Editor\n Copyrights @ Technobotz Inc")
-
-
-    #New sub-menu handler
-    def new_command():
-        data = textPad.get('1.0',END+'-1c')
-        if(data != ''): #with a warning prompt
-            if tkMessageBox.askokcancel("New ","Do you want to save changes?"):
-                save_command()            
-                textPad.delete('1.0',END)        
-            else: #if user refuses to save progress
-                textPad.delete('1.0',END)
-        else: #without any warning
-            textPad.delete('1.0',END)
-
-    #Print sub-menu handler
-    def print_command():
-        file = tempfile.mktemp(".txt")
-        open(file,"w").write(textPad.get('1.0',END+'-1c'))
-        win32api.ShellExecute(
-            0,
-            "printto",
-            file,
-            '"%s"' % win32print.GetDefaultPrinter (),
-            ".",
-            0
-        )
-
-    #Default handler , for unimplemented functionalities
-    def default():
-        print "This command does nothing"
-            
-    menu = Menu(root)
-    root.config(menu=menu)
-
-    filemenu = Menu(menu)
-    menu.add_cascade(label="File",menu = filemenu)
-    filemenu.add_command(label="New", command=new_command)
-    filemenu.add_command(label="Open",command=open_command)
-    filemenu.add_command(label="Open Recent",command=default)
-    filemenu.add_separator()
-    filemenu.add_command(label="Save",command=save_command)
-    filemenu.add_command(label="Save As",command=save_command)
-    filemenu.add_separator()
-    filemenu.add_command(label="Print",command=print_command)
-    filemenu.add_separator()
-    filemenu.add_command(label="Exit",command=exit_command)
-
-    findmenu = Menu(menu)
-    menu.add_cascade(label="Find",menu=findmenu)
-    findmenu.add_command(label = "Find", command = default)
-    findmenu.add_command(label = "Find Next", command= default)
-    findmenu.add_command(label = "Find Previous" , command = default)
-    findmenu.add_separator()
-    findmenu.add_command(label = "Replace", command = default)
-    findmenu.add_command(label = "Replace Next", command = default)
-
-    viewmenu = Menu(menu)
-    menu.add_cascade(label="View",menu=viewmenu)
-    viewmenu.add_command(label="Zoom In",command=default)
-    viewmenu.add_command(label="Zoom Out",command=default)
-    viewmenu.add_separator()
-    viewmenu.add_command(label="Ruler",command=default)
-    viewmenu.add_command(label="Layout",command=default)
-    viewmenu.add_separator()
-    viewmenu.add_command(label="Spell Check",command=default)
-    viewmenu.add_command(label="Dictionary",command=default)
-
-    toolmenu = Menu(menu)
-    menu.add_cascade(label="Tools",menu=toolmenu)
-    toolmenu.add_command(label="New Plugins",command=default)
-    toolmenu.add_command(label="New Snippet",command=default)
-    toolmenu.add_separator()
-    toolmenu.add_command(label="Manage Shortcuts",command=default)
-
-    premenu = Menu(menu)
-    menu.add_cascade(label="Preferences",menu=premenu)
-    premenu.add_command(label="User Settings",command=default)
-    premenu.add_command(label="Key Bindings",command=default)
-    premenu.add_separator()
-    premenu.add_command(label="Themes",command=default)
-
-    helpmenu = Menu(menu)
-    menu.add_cascade(label="Help",menu = helpmenu)
-    helpmenu.add_command(label="About",command=about_command)
-    #end of menu creation
 
 class EditorClass(object):
 
@@ -171,6 +50,8 @@ class EditorClass(object):
                 undo=True,
                 background = 'white'
         )
+        self.text.configure(background='#6F706B',fg="#ffffff")
+
         self.initializeMainMenu()
         self.text.pack(side=LEFT, fill=BOTH, expand=1)
 
@@ -320,26 +201,59 @@ class EditorClass(object):
         premenu.add_cascade(label="Themes",menu=ThemesList)
 
         availableThemes = (
+                'Classic Theme',
                 'Light Theme',
                 'Quartz Theme',
                 'Dark Theme',
                 'Trans Theme',
                 'Iron Theme',
                 'Shanghai Theme',
-                'TajMahal Theme',
-                'Rosy Theme'
+                'Taj Theme',
+                'Rosy Theme',
+                'Cyber Theme'
             );
         
         for theme in availableThemes:
-            ThemesList.add_command(label=theme,command=default)
+            ThemesList.add_command(label=theme,command = lambda theme=theme: self.changeTheme(theme), underline=0)
 
         helpmenu = Menu(menu)
         helpmenu.config(tearoff=False)
         
         menu.add_cascade(label="Help",menu = helpmenu)
         helpmenu.add_command(label="About",command=about_command)
-        #end of menu creation
-   
+
+    def changeTheme(self,theme):
+            if theme == 'Classic Theme':
+                self.text.configure(background='#FFFFFF',fg="#000000")
+                self.lnText.configure(background='#FFFFFF',fg="#000000")
+            elif theme == 'Light Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Quartz Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Dark Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Trans Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Iron Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Shanghai Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Taj Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Rosy Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+            elif theme == 'Cyber Theme':
+                self.text.configure(background='#6F00AB',fg="#fdf95f")
+                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                
     def getLineNumbers(self):
         
         x = 0
