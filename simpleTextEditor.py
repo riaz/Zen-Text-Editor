@@ -202,14 +202,13 @@ class EditorClass(object):
 
         availableThemes = (
                 'Classic Theme',
+                'Eclipse Theme',
                 'Light Theme',
                 'Quartz Theme',
                 'Dark Theme',
                 'Trans Theme',
                 'Iron Theme',
                 'Shanghai Theme',
-                'Taj Theme',
-                'Rosy Theme',
                 'Cyber Theme'
             );
         
@@ -225,34 +224,31 @@ class EditorClass(object):
     def changeTheme(self,theme):
             if theme == 'Classic Theme':
                 self.text.configure(background='#FFFFFF',fg="#000000")
-                self.lnText.configure(background='#FFFFFF',fg="#000000")
+                self.lnText.configure(background='#EBEBEB',fg="#333333")
+            if theme == 'Eclipse Theme':
+                self.text.configure(background='#FFFFFF',fg="#000000")
+                self.lnText.configure(background='#EBEBEB',fg="#888888")                
             elif theme == 'Light Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#FDF6E3',fg="#586E75")
+                self.lnText.configure(background='#FBF1D3',fg="#333333")
             elif theme == 'Quartz Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#002240',fg="#FFFFFF")
+                self.lnText.configure(background='#011E3A',fg="#FFFFFF")
             elif theme == 'Dark Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#202020',fg="#E6E1DC")
+                self.lnText.configure(background='#3D3D3D',fg="#222222")
             elif theme == 'Trans Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#323232',fg="#FFFFFF")
+                self.lnText.configure(background='#3B3B3B',fg="#FFFFFF")
             elif theme == 'Iron Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#FFFFFF',fg="#4D4D4C")
+                self.lnText.configure(background='#F6F6F6',fg="#4D4D4C")
             elif theme == 'Shanghai Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
-            elif theme == 'Taj Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
-            elif theme == 'Rosy Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#002B36',fg="#93A1A1")
+                self.lnText.configure(background='#01313F',fg="#D0EDF7")
             elif theme == 'Cyber Theme':
-                self.text.configure(background='#6F00AB',fg="#fdf95f")
-                self.lnText.configure(background='#6F00AB',fg="#fdf95f")
+                self.text.configure(background='#272822',fg="#F8F8F2")
+                self.lnText.configure(background='#2F3129',fg="#8F908A")
                 
     def getLineNumbers(self):
         
