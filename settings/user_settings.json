@@ -1,16 +1,1 @@
-{
-    "open_file": [
-        {
-        "file": "zen.cpp",
-        "path": "C:/riaz/examples/zen.cpp"
-        },
-        {
-        "file": "random.c",
-        "path": "C:/riaz/examples/random.c"
-        }
-    ],    
-    "theme": "Dark Theme",
-    "parameters": {
-        "username": "riaz"
-    }
-}
+{"open_file": [{"path": "C:/riaz/examples/zen.cpp", "file": "zen.cpp"}, {"path": "C:/riaz/examples/random.c", "file": "random.c"}], "theme": "Dark Theme", "parameters": {"username": "riaz"}}
