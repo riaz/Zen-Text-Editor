@@ -1,0 +1,7 @@
+Resources References:
+
+Menu, Sub-Menu's and Context Menus
+1. http://zetcode.com/gui/tkinter/menustoolbars/
+
+Line Numbers in Tkinter 
+2. http://tkinter.unpythonic.net/wiki/A_Text_Widget_with_Line_Numbers
