@@ -18,7 +18,7 @@ def insertSnippet(lang):
                 str = 'section .text\norg 0x100\n\tmov\tah,0x9\n\tmov\tdx,hello\n\tint\t0x21\n\n\tmov\tax,0x4c00\n\tint\t0x21\n\nsection .data\nhello:db  "Hello, World!",13,10,"$"'
                 
         elif lang == 'Perl':
-                str = 'print "Hello World!\n"'
+                str = 'print "Hello World!"\n'
                 
         elif lang == 'Haskell':
                 str = 'module Main where\n\nmain :: IO()\nmain = putStrLn "Hello, World!"'
@@ -33,40 +33,40 @@ def insertSnippet(lang):
                 str = '-module(hello).\n-export([hello_world/0]).\n\nhello_world() -> io.fwrite("Hello, World").',
                 
         elif lang == 'Javascript':
-                str = 'var a=10,b=20,sum;\n\nsum = a + b;\n\n document.writeln("Sum of a + b = " + sum);\n\ndocument.writeln("Hello World");'
+                str = 'var a=10,b=20,sum;\n\nsum = a + b;\n\ndocument.writeln("Sum of a + b = " + sum);\n\ndocument.writeln("Hello World");'
                 
         elif lang == 'ActionScript':
                 str = 'package\n{\n\timport flash.display.Sprite;\n\n\tpublic class ActionScript3 extends Sprite\n\t{\n\t\tpublic function ActionScript3()\n\t\t{\n\t\t\ttrace("Hello World");\n\t\t}\n\t}\n}'
                 
         elif lang == 'Lua':
-                str = 'Lua'
+                str = 'print "Hello, World!"'
                 
         elif lang == 'Pascal':
-                str = 'Pascal'
+                str = 'program HelloWorld(output);\nbegin\n\tWriteLn("Hello World!")\nend.'
                 
         elif lang == 'Fortran':
-                str = 'Fortran'
+                str = 'print *,"Hello World"'
                 
         elif lang == 'Tcl':
-                str = 'Tcl'
+                str = 'puts "Hello, World"'
                 
         elif lang == 'Bash':
-                str = 'Bash'
+                str = 'echo "Hello World"'
                 
         elif lang == 'Batch':
-                str = 'Batch'
+                str = 'rem "Welcome to Batch Programming"\n\necho "Hello World"'
                 
         elif lang == 'VBScript':
-                str = 'VBScript'
+                str = 'WScript.Echo("Hello,World")'
                 
         elif lang == 'Html':
-                str = 'Html'
+                str = '<html>\n<head>\n\t<title>\n\t\tHello World\n\t</title>\n\t<script></script>\n</head>\n<body>\n\tHello,World\n</body>\n</html>'
                 
         elif lang == 'Xml':
-                str = 'Xml'
+                str = '<xml>\n<text>\n\tHello World\n</text>\n</xml>'
                 
         elif lang == 'NodeJS':
-                str = 'NodeJS'
+                str = 'console.log("Hello World")'
                 
         elif lang == 'Abap':
                 str = 'PROGRAM helloworld\n\nWRITE "hello world".'
