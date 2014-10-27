@@ -12,25 +12,25 @@ def insertSnippet(lang):
                 str = 'a = 10\nb=10\n\nfor i in range(1,10):\n\tprint i\n\nprint "Hello World"'
                 
         elif lang == 'Go':
-                str = 'Go'
+                str = 'package main\n\nimport "fmt"\n\nfunc main(){\n\tfmt.Println("Hello, World")\n}'
                 
         elif lang == 'Asm':
                 str = 'section .text\norg 0x100\n\tmov\tah,0x9\n\tmov\tdx,hello\n\tint\t0x21\n\n\tmov\tax,0x4c00\n\tint\t0x21\n\nsection .data\nhello:db  "Hello, World!",13,10,"$"'
                 
         elif lang == 'Perl':
-                str = 'Perl'
+                str = 'print "Hello World!\n"'
                 
-        elif lang == 'Haskel':
-                str = 'Haskel'
+        elif lang == 'Haskell':
+                str = 'module Main where\n\nmain :: IO()\nmain = putStrLn "Hello, World!"'
                 
         elif lang == 'Ruby':
-                str = 'Ruby'
+                str = 'puts "Hello World!\n\n$stdout.puts "Hello World!"'
                 
         elif lang == 'C#':
-                str = 'C#'
+                str = 'using System;\nclass HelloWorld\n{\n\tstatic void Main()\n\t{\n\t\tSystem.Console.WriteLn("Hello World");\n\t}\n}'
                 
         elif lang == 'Erlang':
-                str = 'Erlang',
+                str = '-module(hello).\n-export([hello_world/0]).\n\nhello_world() -> io.fwrite("Hello, World").',
                 
         elif lang == 'Javascript':
                 str = 'var a=10,b=20,sum;\n\nsum = a + b;\n\n document.writeln("Sum of a + b = " + sum);\n\ndocument.writeln("Hello World");'
