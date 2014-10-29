@@ -1,0 +1,9 @@
+('C:\\Users\\munshi.riaz\\Documents\\GitHub\\Zen-Text-Editor\\build\\simpleTextEditor\\simpleTextEditor.exe',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ False,
+ 1414553916L)
