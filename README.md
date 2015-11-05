@@ -5,7 +5,7 @@ A Python-Tcl based Text Editor with rich editor features and multiple tab suppor
 
 ScreenShots
 ===============
-![Zen Text Editor](/screenshots/Zen-Code-Editor)
+![Zen Text Editor](/screenshots/Zen-Code-Editor.png)
 Format: ![Zen Text Editor](url)
 
 
